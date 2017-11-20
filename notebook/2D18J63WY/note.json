@@ -1,0 +1,707 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md \n\n# Scala",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 5:00:14 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eScala\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511196860129_1384312389",
+      "id": "20171120-165420_1064730589",
+      "dateCreated": "Nov 20, 2017 4:54:20 PM",
+      "dateStarted": "Nov 20, 2017 5:00:14 PM",
+      "dateFinished": "Nov 20, 2017 5:00:14 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md \n### Definição de variáveis:\n\nEm Scala existem dois tipos de variáveis, as mutáveis, que são declaradas com `var` e as imutáveis, declaradas com `val`:",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:08:59 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eDefinição de variáveis:\u003c/h3\u003e\n\u003cp\u003eEm Scala existem dois tipos de variáveis, as mutáveis, que são declaradas com \u003ccode\u003evar\u003c/code\u003e e as imutáveis, declaradas com \u003ccode\u003eval\u003c/code\u003e:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511197188914_-1991583374",
+      "id": "20171120-165948_298474041",
+      "dateCreated": "Nov 20, 2017 4:59:48 PM",
+      "dateStarted": "Nov 20, 2017 10:08:59 PM",
+      "dateFinished": "Nov 20, 2017 10:08:59 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "var greeting \u003d \"Hello , world!\"\n\nprintln(greeting)\n\ngreeting \u003d \"Leave me alone, world!\"\n\nprintln(greeting)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:01 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 84.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "greeting: String \u003d Hello , world!\nHello , world!\ngreeting: String \u003d Leave me alone, world!\nLeave me alone, world!\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511197007173_-1333002171",
+      "id": "20171120-165647_1331094116",
+      "dateCreated": "Nov 20, 2017 4:56:47 PM",
+      "dateStarted": "Nov 20, 2017 10:09:01 PM",
+      "dateFinished": "Nov 20, 2017 10:09:03 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val greeting \u003d \"Hello, world...again\"\n\nprintln(greeting)\n\ngreeting \u003d \"Come on, one more time?\"",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:05 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "greeting: String \u003d Hello, world...again\nHello, world...again\n\u003cconsole\u003e:28: error: reassignment to val\n       greeting \u003d \"Come on, one more time?\"\n                ^\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511197245020_-1869171927",
+      "id": "20171120-170045_1119664935",
+      "dateCreated": "Nov 20, 2017 5:00:45 PM",
+      "dateStarted": "Nov 20, 2017 10:09:05 PM",
+      "dateFinished": "Nov 20, 2017 10:09:06 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Definindo funções:\n\nParticularidades:\n\n* O tipo de retorno pode ser suprimido porque a linguagem possui inferência de tipos\n* A cláusula `return`  pode ser omitida, o último valor da função é sempre retornado\n* Em Scala funções são valores de primeira classe, então podem ser atribuidas em variáveis, passadas como parâmetro e retornadas por funções\n* Scala também possui funções anônimas (lambda) ",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:08 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eDefinindo funções:\u003c/h3\u003e\n\u003cp\u003eParticularidades:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eO tipo de retorno pode ser suprimido porque a linguagem possui inferência de tipos\u003c/li\u003e\n  \u003cli\u003eA cláusula \u003ccode\u003ereturn\u003c/code\u003e pode ser omitida, o último valor da função é sempre retornado\u003c/li\u003e\n  \u003cli\u003eEm Scala funções são valores de primeira classe, então podem ser atribuidas em variáveis, passadas como parâmetro e retornadas por funções\u003c/li\u003e\n  \u003cli\u003eScala também possui funções anônimas (lambda)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511197392195_-787071962",
+      "id": "20171120-170312_2126192223",
+      "dateCreated": "Nov 20, 2017 5:03:12 PM",
+      "dateStarted": "Nov 20, 2017 10:09:08 PM",
+      "dateFinished": "Nov 20, 2017 10:09:09 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def max(x: Int, y: Int): Int \u003d {\n    if(x \u003e y)\n        x\n    else\n        return y\n}\n\nval min \u003d (x: Int, y: Int) \u003d\u003e if (x \u003c y) x else y // lambda\n\nval list \u003d List(23, 5, 1991)\n\nprintln(\"Maximo: \" + list.reduce(max))\n\nprintln(\"Minimo: \" + list.reduce(min))",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:11 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "max: (x: Int, y: Int)Int\nmin: (Int, Int) \u003d\u003e Int \u003d \u003cfunction2\u003e\nlist: List[Int] \u003d List(23, 5, 1991)\nMaximo: 1991\nMinimo: 5\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511197567162_-404403337",
+      "id": "20171120-170607_1504674118",
+      "dateCreated": "Nov 20, 2017 5:06:07 PM",
+      "dateStarted": "Nov 20, 2017 10:09:11 PM",
+      "dateFinished": "Nov 20, 2017 10:09:14 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Orientação a objetos:\n\n#### Classes\n\nParticularidades:\n\n* O construtor principal fina na definição da própria classe\n* Os parâmetros do construtor principal são atributos de classe, não sendo necessário declaralos novamente\n* Atributos que não são iniciados por `val` ou `var` são considerados atributos privados",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:17 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eOrientação a objetos:\u003c/h3\u003e\n\u003ch4\u003eClasses\u003c/h4\u003e\n\u003cp\u003eParticularidades:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eO construtor principal fina na definição da própria classe\u003c/li\u003e\n  \u003cli\u003eOs parâmetros do construtor principal são atributos de classe, não sendo necessário declaralos novamente\u003c/li\u003e\n  \u003cli\u003eAtributos que não são iniciados por \u003ccode\u003eval\u003c/code\u003e ou \u003ccode\u003evar\u003c/code\u003e são considerados atributos privados\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511197627512_-1783065915",
+      "id": "20171120-170707_1842540358",
+      "dateCreated": "Nov 20, 2017 5:07:07 PM",
+      "dateStarted": "Nov 20, 2017 10:09:17 PM",
+      "dateFinished": "Nov 20, 2017 10:09:17 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "class Pessoa(val nome: String , val idade: Int) {\r    \r    def falar(algo: String) \u003d println(nome + \" falou \" + algo);\r    \r    override def toString \u003d nome + \"(\" + idade + \")\"\r}",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:20 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "defined class Pessoa\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511198047584_-1621105242",
+      "id": "20171120-171407_2000526362",
+      "dateCreated": "Nov 20, 2017 5:14:07 PM",
+      "dateStarted": "Nov 20, 2017 10:09:20 PM",
+      "dateFinished": "Nov 20, 2017 10:09:20 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Objetos\n\nParticularidades:\n\n* Implementação do Padrão de Projeto Singleton \n* São definidos como classes, mas não podem ser instanciados, já são a própria instância\n* Em Scala não existem membros estáticos como em Java, como métodos que podem ser chamados sem instanciar a classe, mas estes podem ser simulados ao se criar um objeto com o mesmo nome da classe, colocando os membros estáticos dentro dele. Quando isso ocorre, a classe e o objeto são chamados de companheiros",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:22 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eObjetos\u003c/h4\u003e\n\u003cp\u003eParticularidades:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eImplementação do Padrão de Projeto Singleton\u003c/li\u003e\n  \u003cli\u003eSão definidos como classes, mas não podem ser instanciados, já são a própria instância\u003c/li\u003e\n  \u003cli\u003eEm Scala não existem membros estáticos como em Java, como métodos que podem ser chamados sem instanciar a classe, mas estes podem ser simulados ao se criar um objeto com o mesmo nome da classe, colocando os membros estáticos dentro dele. Quando isso ocorre, a classe e o objeto são chamados de companheiros\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511203522697_2097382843",
+      "id": "20171120-184522_1128567767",
+      "dateCreated": "Nov 20, 2017 6:45:22 PM",
+      "dateStarted": "Nov 20, 2017 10:09:22 PM",
+      "dateFinished": "Nov 20, 2017 10:09:22 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "object JohnDoe {\r    def falar(algo: String) \u003d println(\"John Doe falou \" + algo)\r};\r\rclass Pizza (var crustType: String) {\r    override def toString \u003d \"Crust type is \" + crustType\r};\r\robject Pizza {\r    val CRUST_TYPE_THIN \u003d \"thin\";\r    val CRUST_TYPE_THICK \u003d \"thick\";\r    def getFoo \u003d \"Foo\"\r}",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:24 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala",
+        "lineNumbers": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "defined object JohnDoe\ndefined class Pizza\ndefined object Pizza\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511203955362_-1048909248",
+      "id": "20171120-185235_236957082",
+      "dateCreated": "Nov 20, 2017 6:52:35 PM",
+      "dateStarted": "Nov 20, 2017 10:09:25 PM",
+      "dateFinished": "Nov 20, 2017 10:09:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Traits\n\nParticularidades:\n\n* Funcionam com interfaces em Java, servindo para estabelecer contratos\n* Diferentemente de interfaces, Traits podem conter uma implementação padrão\n* Por esse motivo, Traits também são utilizadas para simular herança múltipla, sem ter os problemas inerentes a essa\n* Para a primeira classe a ser herdada ou Trait a ser agregada (caso a classe não herde de nenhuma outra) deve se utilizar a palavra `extends`, as demais Traits devem ser agregadas utilizando `with`",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:29 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eTraits\u003c/h4\u003e\n\u003cp\u003eParticularidades:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eFuncionam com interfaces em Java, servindo para estabelecer contratos\u003c/li\u003e\n  \u003cli\u003eDiferentemente de interfaces, Traits podem conter uma implementação padrão\u003c/li\u003e\n  \u003cli\u003ePor esse motivo, Traits também são utilizadas para simular herança múltipla, sem ter os problemas inerentes a essa\u003c/li\u003e\n  \u003cli\u003ePara a primeira classe a ser herdada ou Trait a ser agregada (caso a classe não herde de nenhuma outra) deve se utilizar a palavra \u003ccode\u003eextends\u003c/code\u003e, as demais Traits devem ser agregadas utilizando \u003ccode\u003ewith\u003c/code\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511205459277_-371240552",
+      "id": "20171120-191739_1694058595",
+      "dateCreated": "Nov 20, 2017 7:17:39 PM",
+      "dateStarted": "Nov 20, 2017 10:09:29 PM",
+      "dateFinished": "Nov 20, 2017 10:09:29 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "abstract class Veiculo;\r\rtrait Aquatico { \r    def boiar () : Unit\r};\r\rtrait Terrestre {\r    def correr() \u003d println(\"Correr\")\r};\r\rtrait Aereo {\r    def voar() \u003d println(\"Voar\") \r};\r\rclass Aviao extends Veiculo with Terrestre with Aereo;\r\rclass Carro extends Veiculo with Terrestre;\r\rclass Barco extends Veiculo with Aquatico { \r    def boiar() \u003d println(\"Boiar\")\r}",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:31 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "defined class Veiculo\ndefined trait Aquatico\ndefined trait Terrestre\ndefined trait Aereo\ndefined class Aviao\ndefined class Carro\ndefined class Barco\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511205955730_1918691835",
+      "id": "20171120-192555_1387377168",
+      "dateCreated": "Nov 20, 2017 7:25:55 PM",
+      "dateStarted": "Nov 20, 2017 10:09:31 PM",
+      "dateFinished": "Nov 20, 2017 10:09:32 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Case Class e Pattern Matching\n\n#### Expressão Match:\n\n* Funcional de forma semelhante a um `switch` em outras linguagens\n* Mas é mais poderoso a medida que permite que algo seja selecionado a partir de padrões arbitrários e não só valores definidos como um `switch`",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:09:38 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCase Class e Pattern Matching\u003c/h3\u003e\n\u003ch4\u003eExpressão Match:\u003c/h4\u003e\n\u003cul\u003e\n  \u003cli\u003eFuncional de forma semelhante a um \u003ccode\u003eswitch\u003c/code\u003e em outras linguagens\u003c/li\u003e\n  \u003cli\u003eMas é mais poderoso a medida que permite que algo seja selecionado a partir de padrões arbitrários e não só valores definidos como um \u003ccode\u003eswitch\u003c/code\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511206339965_709979357",
+      "id": "20171120-193219_229070732",
+      "dateCreated": "Nov 20, 2017 7:32:19 PM",
+      "dateStarted": "Nov 20, 2017 10:09:38 PM",
+      "dateFinished": "Nov 20, 2017 10:09:38 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def calcular(op: String , num1: Int , num2: Int): Int \u003d op match {\r    case \"+\" \u003d\u003e num1 + num2\r    case \"−\" \u003d\u003e num1 - num2\r    case \"*\" \u003d\u003e num1 * num2 \r    case \"/\" \u003d\u003e num1 / num2\r    case _ \u003d\u003e -1\r};\r\rval resultado \u003d calcular(\"+\", 2, 3)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:10:34 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "calcular: (op: String, num1: Int, num2: Int)Int\nresultado: Int \u003d 5\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511207903751_-508193374",
+      "id": "20171120-195823_1696367973",
+      "dateCreated": "Nov 20, 2017 7:58:23 PM",
+      "dateStarted": "Nov 20, 2017 10:10:34 PM",
+      "dateFinished": "Nov 20, 2017 10:10:35 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Case Class\n\n* Aparentemente é uma classe normal acrescida da cláusula `case`\n* Com essa cláusula, o compilador acrescenta na classe uma série de conveniências:\n    * É criado um método construtor com o mesmo nome da classe, de forma que não é necessário usar `new` \n    * Todos os parâmetros do construtor principal são declarados como `val` e considerados atributos de classe\n    * É criada uma implementação padrão para os métodos equals, hashCode e toString",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:10:48 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eCase Class\u003c/h4\u003e\n\u003cul\u003e\n  \u003cli\u003eAparentemente é uma classe normal acrescida da cláusula \u003ccode\u003ecase\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eCom essa cláusula, o compilador acrescenta na classe uma série de conveniências:\n    \u003cul\u003e\n      \u003cli\u003eÉ criado um método construtor com o mesmo nome da classe, de forma que não é necessário usar \u003ccode\u003enew\u003c/code\u003e\u003c/li\u003e\n      \u003cli\u003eTodos os parâmetros do construtor principal são declarados como \u003ccode\u003eval\u003c/code\u003e e considerados atributos de classe\u003c/li\u003e\n      \u003cli\u003eÉ criada uma implementação padrão para os métodos equals, hashCode e toString\u003c/li\u003e\n    \u003c/ul\u003e\n  \u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511207939606_-940019558",
+      "id": "20171120-195859_553324025",
+      "dateCreated": "Nov 20, 2017 7:58:59 PM",
+      "dateStarted": "Nov 20, 2017 10:10:48 PM",
+      "dateFinished": "Nov 20, 2017 10:10:48 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "abstract class Expr;\rcase class Var(name: String ) extends Expr; \rcase class Number(num: Double) extends Expr;\rcase class UnOp( operator : String , arg : Expr) extends Expr;\rcase class BinOp(operator: String, left: Expr, right: Expr) extends Expr;",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:21:19 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "defined class Expr\ndefined class Var\ndefined class Number\ndefined class UnOp\ndefined class BinOp\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511208179826_1091575584",
+      "id": "20171120-200259_1564931951",
+      "dateCreated": "Nov 20, 2017 8:02:59 PM",
+      "dateStarted": "Nov 20, 2017 10:21:19 PM",
+      "dateFinished": "Nov 20, 2017 10:21:20 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Pattern Matching",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:10:59 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003ePattern Matching\u003c/h4\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511208528986_-1035627753",
+      "id": "20171120-200848_669172619",
+      "dateCreated": "Nov 20, 2017 8:08:48 PM",
+      "dateStarted": "Nov 20, 2017 10:10:59 PM",
+      "dateFinished": "Nov 20, 2017 10:10:59 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def simplifyAll(expr: Expr): Expr \u003d expr match { \r    case UnOp(\"-\", UnOp(\"-\", e)) \u003d\u003e simplifyAll(e)\r    case BinOp(\"+\", e, Number(0)) \u003d\u003e simplifyAll(e)\r    case BinOp(\"*\", e, Number(1)) \u003d\u003e simplifyAll(e)\r    case UnOp(op, e) \u003d\u003e UnOp(op, simplifyAll(e))\r    case BinOp(op, l, r) \u003d\u003e BinOp(op, simplifyAll(l), simplifyAll(r))\r    case _ \u003d\u003e expr\r}",
+      "user": "anonymous",
+      "dateUpdated": "Nov 20, 2017 10:24:28 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "simplifyAll: (expr: Expr)Expr\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511216628171_630920519",
+      "id": "20171120-222348_1233550926",
+      "dateCreated": "Nov 20, 2017 10:23:48 PM",
+      "dateStarted": "Nov 20, 2017 10:24:28 PM",
+      "dateFinished": "Nov 20, 2017 10:24:28 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511216683216_208294371",
+      "id": "20171120-222443_544455830",
+      "dateCreated": "Nov 20, 2017 10:24:43 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Básico de Scala",
+  "id": "2D18J63WY",
+  "angularObjects": {
+    "2CZDPS9EF:shared_process": [],
+    "2CYKZNNQ3:shared_process": [],
+    "2CXGGQ7EA:shared_process": [],
+    "2CXMU7ZTH:shared_process": [],
+    "2CYZUQHUA:shared_process": [],
+    "2CXPRU79S:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
