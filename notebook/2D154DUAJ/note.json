@@ -1,0 +1,854 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n# Tutorial de Spark",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eTutorial de Spark\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275983_930251749",
+      "id": "20171121-164833_100867793",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Resilient Distributed Dataset (RDD)\n\nPrincipal componente de Spark, funciona como uma abstração do conjunto de dados, fazendo com que um conjunto particionado em várias partes seja tratado como se fosse um único elemento.\n\n### SparkContext\n* Criado pelo programa Driver\n* Resposponsável por fazer os RDDs serem resilientes e distribuídos\n* Cria RDDs\n* É criado automaticamente pelo Zeppelin e o Spark Shell como o objeto `sc`",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:33:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eResilient Distributed Dataset (RDD)\u003c/h2\u003e\n\u003cp\u003ePrincipal componente de Spark, funciona como uma abstração do conjunto de dados, fazendo com que um conjunto particionado em várias partes seja tratado como se fosse um único elemento.\u003c/p\u003e\n\u003ch3\u003eSparkContext\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eCriado pelo programa Driver\u003c/li\u003e\n  \u003cli\u003eResposponsável por fazer os RDDs serem resilientes e distribuídos\u003c/li\u003e\n  \u003cli\u003eCria RDDs\u003c/li\u003e\n  \u003cli\u003eÉ criado automaticamente pelo Zeppelin e o Spark Shell como o objeto \u003ccode\u003esc\u003c/code\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275986_941409467",
+      "id": "20171121-164853_169967472",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:33:15 AM",
+      "dateFinished": "Nov 23, 2017 1:33:18 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "println(sc)",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275987_941024718",
+      "id": "20171121-165730_112926678",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Criando RDDs\n* `val nums \u003d sc.parallelize(List(1, 2, 3, 4))`\n* `sc.textFile(\"file:///c:/users/frank/gobs-o-text.txt\")`\n\t* or `s3n://` , `hdfs://`\n* `hiveCtx \u003d HiveContext(sc)` \n\t* `rows \u003d hiveCtx.sql(\"SELECT name, age FROM users\")`\n* Can also create from:\n\t* JDBC\n\t* Cassandra\n\t* HBase\n\t* Elastisearch\n\t* JSON, CSV, sequence files, object files, various compressed formats\u0000",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:34:17 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCriando RDDs\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003eval nums \u003d sc.parallelize(List(1, 2, 3, 4))\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003esc.textFile(\u0026quot;file:///c:/users/frank/gobs-o-text.txt\u0026quot;)\u003c/code\u003e\n    \u003cul\u003e\n      \u003cli\u003eor \u003ccode\u003es3n://\u003c/code\u003e , \u003ccode\u003ehdfs://\u003c/code\u003e\u003c/li\u003e\n    \u003c/ul\u003e\n  \u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003ehiveCtx \u003d HiveContext(sc)\u003c/code\u003e\n    \u003cul\u003e\n      \u003cli\u003e\u003ccode\u003erows \u003d hiveCtx.sql(\u0026quot;SELECT name, age FROM users\u0026quot;)\u003c/code\u003e\u003c/li\u003e\n    \u003c/ul\u003e\n  \u003c/li\u003e\n  \u003cli\u003eCan also create from:\n    \u003cul\u003e\n      \u003cli\u003eJDBC\u003c/li\u003e\n      \u003cli\u003eCassandra\u003c/li\u003e\n      \u003cli\u003eHBase\u003c/li\u003e\n      \u003cli\u003eElastisearch\u003c/li\u003e\n      \u003cli\u003eJSON, CSV, sequence files, object files, various compressed formats\u003c/li\u003e\n    \u003c/ul\u003e\n  \u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275989_938716225",
+      "id": "20171121-170039_922567632",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:34:17 AM",
+      "dateFinished": "Nov 23, 2017 1:34:17 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val nums \u003d sc.parallelize(List(1, 2, 3, 4)) // RDD",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:30:49 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275990_939870472",
+      "id": "20171121-170330_343258321",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:30:49 AM",
+      "dateFinished": "Nov 23, 2017 1:30:51 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Operações\n\nSpark possui dois tipos de operações em RDDs, as transformações e as ações:\n\n#### Transformações\n\nTransformações são todas as operações que geram um novo RDD a partir de outro ou, em outras palavras, que transformam um RDD em outro.\n\nAlgumas transformações:\n\n* map\n* flatmap\n* filter\n* distinct\n* sample\n* union, intersection, subtract, cartesian",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eOperações\u003c/h3\u003e\n\u003cp\u003eSpark possui dois tipos de operações em RDDs, as transformações e as ações:\u003c/p\u003e\n\u003ch4\u003eTransformações\u003c/h4\u003e\n\u003cp\u003eTransformações são todas as operações que geram um novo RDD a partir de outro ou, em outras palavras, que transformam um RDD em outro.\u003c/p\u003e\n\u003cp\u003eAlgumas transformações:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003emap\u003c/li\u003e\n  \u003cli\u003eflatmap\u003c/li\u003e\n  \u003cli\u003efilter\u003c/li\u003e\n  \u003cli\u003edistinct\u003c/li\u003e\n  \u003cli\u003esample\u003c/li\u003e\n  \u003cli\u003eunion, intersection, subtract, cartesian\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275991_939485723",
+      "id": "20171121-170359_616318866",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val squares \u003d nums.map(x \u003d\u003e x * x) // this yield 1, 4, 8, 16\n\ndef squareIt(x: Int): Int \u003d x * x\n\nval squares2 \u003d nums.map(squareIt)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:30:54 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275991_939485723",
+      "id": "20171121-171142_174481552",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:30:54 AM",
+      "dateFinished": "Nov 23, 2017 1:30:56 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Ações\n\nAções são todas as operações que geram um resultado final que não um RDD. Na realidade, uma ação é o que desencadeia de fato a execução de todas as transformações até a execução da ação final que gera algum resultado que não um novo RDD. Isso ocorre porque RDDs são Lazy Evaluated.\n\nAlgumas das principais ações:\n\n* collect\n* count\n* countByValue\n* take\n* top\n* reduce",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:36:37 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eAções\u003c/h4\u003e\n\u003cp\u003eAções são todas as operações que geram um resultado final que não um RDD. Na realidade, uma ação é o que desencadeia de fato a execução de todas as transformações até a execução da ação final que gera algum resultado que não um novo RDD. Isso ocorre porque RDDs são Lazy Evaluated.\u003c/p\u003e\n\u003cp\u003eAlgumas das principais ações:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ecollect\u003c/li\u003e\n  \u003cli\u003ecount\u003c/li\u003e\n  \u003cli\u003ecountByValue\u003c/li\u003e\n  \u003cli\u003etake\u003c/li\u003e\n  \u003cli\u003etop\u003c/li\u003e\n  \u003cli\u003ereduce\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275992_937561978",
+      "id": "20171121-171240_677651776",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:36:37 AM",
+      "dateFinished": "Nov 23, 2017 1:36:37 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val squaresSum \u003d squares.reduce(_+_)\n\nprintln(squaresSum)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:31:03 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275992_937561978",
+      "id": "20171121-171739_1143033852",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:31:04 AM",
+      "dateFinished": "Nov 23, 2017 1:31:05 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Exemplos\n\n#### MovieLens\n\nVamos trabalhar com uma base de dados do site MovieLens de classificação de filmes. Nosso conjunto contem 100,000 classificações de 1000 usuários em 1700 filmes. Os dados são de filmes produzidos até 1998. Os dados estão na pasta `/data/ml-100k`. Segue a descrição dos dois principais arquivos:\n\nu.data     -- The full u data set, 100000 ratings by 943 users on 1682 items.\n              Each user has rated at least 20 movies.  Users and items are\n              numbered consecutively from 1.  The data is randomly\n              ordered. This is a tab separated list of \n\t         user id | item id | rating | timestamp. \n              The time stamps are unix seconds since 1/1/1970 UTC   \n\nu.item      -- Information about the items (movies); this is a tab separated\n              list of\n              movie id | movie title | release date | video release date |\n              IMDb URL | unknown | Action | Adventure | Animation |\n              Children\u0027s | Comedy | Crime | Documentary | Drama | Fantasy |\n              Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi |\n              Thriller | War | Western |\n              The last 19 fields are the genres, a 1 indicates the movie\n              is of that genre, a 0 indicates it is not; movies can be in\n              several genres at once.\n              The movie ids are the ones used in the u.data data set.",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExemplos\u003c/h3\u003e\n\u003ch4\u003eMovieLens\u003c/h4\u003e\n\u003cp\u003eVamos trabalhar com uma base de dados do site MovieLens de classificação de filmes. Nosso conjunto contem 100,000 classificações de 1000 usuários em 1700 filmes. Os dados são de filmes produzidos até 1998. Os dados estão na pasta \u003ccode\u003e/data/ml-100k\u003c/code\u003e. Segue a descrição dos dois principais arquivos:\u003c/p\u003e\n\u003cp\u003eu.data \u0026ndash; The full u data set, 100000 ratings by 943 users on 1682 items.\u003cbr/\u003e Each user has rated at least 20 movies. Users and items are\u003cbr/\u003e numbered consecutively from 1. The data is randomly\u003cbr/\u003e ordered. This is a tab separated list of\u003cbr/\u003e user id | item id | rating | timestamp.\u003cbr/\u003e The time stamps are unix seconds since 1/1/1970 UTC \u003c/p\u003e\n\u003cp\u003eu.item \u0026ndash; Information about the items (movies); this is a tab separated\u003cbr/\u003e list of\u003cbr/\u003e movie id | movie title | release date | video release date |\u003cbr/\u003e IMDb URL | unknown | Action | Adventure | Animation |\u003cbr/\u003e Children\u0026rsquo;s | Comedy | Crime | Documentary | Drama | Fantasy |\u003cbr/\u003e Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi |\u003cbr/\u003e Thriller | War | Western |\u003cbr/\u003e The last 19 fields are the genres, a 1 indicates the movie\u003cbr/\u003e is of that genre, a 0 indicates it is not; movies can be in\u003cbr/\u003e several genres at once.\u003cbr/\u003e The movie ids are the ones used in the u.data data set.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275992_937561978",
+      "id": "20171121-172552_1960728184",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Exemplo 1\nVamos contar quantas vezes cada classificação (de 1 a 5 estrelas) foi dada: ",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExemplo 1\u003c/h3\u003e\n\u003cp\u003eVamos contar quantas vezes cada classificação (de 1 a 5 estrelas) foi dada:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275993_937177229",
+      "id": "20171122-234318_920168047",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// Load up each line of the ratings data into an RDD\nval lines \u003d sc.textFile(\"/data/ml-100k/u.data\")\n    \n// Convert each line to a string, split it out by tabs, and extract the third field.\n// (The file format is userID, movieID, rating, timestamp)\nval ratings \u003d lines.map(x \u003d\u003e x.toString().split(\"\\t\")(2))\n    \n// Count up how many times each value (rating) occurs\nval results \u003d ratings.countByValue()\n    \n// Sort the resulting map of (rating, count) tuples\nval sortedResults \u003d results.toSeq.sortBy(_._1)\n    \n// Print each result on its own line.\nsortedResults.foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:58:23 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275993_937177229",
+      "id": "20171121-173529_1357113677",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:58:24 AM",
+      "dateFinished": "Nov 23, 2017 1:58:27 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Exemplo 2\nVamos trabalhar com RDDs de tuplas de chave-valor. Esse tipo de RDD possui uma série de operações específicas que permitem agrupar e processar valores de acordo com suas chaves e permite operações de Join estilo SQL.\n\nNesse exemplos vamos analisar um conjunto de dados que contem informações sobre pessoas e seu número de amigos. Cada linha do arquivo está da seguinte forma:\n\nID, name, age,  number of friends\n\nNosso objetivo é encontrar a média do número de amigos por idade.",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:40:56 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExemplo 2\u003c/h3\u003e\n\u003cp\u003eVamos trabalhar com RDDs de tuplas de chave-valor. Esse tipo de RDD possui uma série de operações específicas que permitem agrupar e processar valores de acordo com suas chaves e permite operações de Join estilo SQL.\u003c/p\u003e\n\u003cp\u003eNesse exemplos vamos analisar um conjunto de dados que contem informações sobre pessoas e seu número de amigos. Cada linha do arquivo está da seguinte forma:\u003c/p\u003e\n\u003cp\u003eID, name, age, number of friends\u003c/p\u003e\n\u003cp\u003eNosso objetivo é encontrar a média do número de amigos por idade.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275994_938331476",
+      "id": "20171121-173819_1139899351",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:40:56 AM",
+      "dateFinished": "Nov 23, 2017 1:40:56 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// Load each line of the source data into an RDD\nval lines \u003d sc.textFile(\"/data/fakefriends.csv\")\n    \n/** A function that splits a line of input into (age, numFriends) tuples. */\ndef parseLine(line: String) \u003d {\n    // Split by commas\n    val fields \u003d line.split(\",\")\n    // Extract the age and numFriends fields, and convert to integers\n    val age \u003d fields(2).toInt\n    val numFriends \u003d fields(3).toInt\n    // Create a tuple that is our result.\n    (age, numFriends)\n}\n    \n// Use our parseLines function to convert to (age, numFriends) tuples\nval rdd \u003d lines.map(parseLine)\n    \n// Lots going on here...\n// We are starting with an RDD of form (age, numFriends) where age is the KEY and numFriends is the VALUE\n// We use mapValues to convert each numFriends value to a tuple of (numFriends, 1)\n// Then we use reduceByKey to sum up the total numFriends and total instances for each age, by\n// adding together all the numFriends values and 1\u0027s respectively.\nval totalsByAge \u003d rdd.mapValues(x \u003d\u003e (x, 1)).reduceByKey( (x,y) \u003d\u003e (x._1 + y._1, x._2 + y._2))\n    \n// So now we have tuples of (age, (totalFriends, totalInstances))\n// To compute the average we divide totalFriends / totalInstances for each age.\nval averagesByAge \u003d totalsByAge.mapValues(x \u003d\u003e x._1 / x._2)\n    \n// Collect the results from the RDD (This kicks off computing the DAG and actually executes the job)\nval results \u003d averagesByAge.collect()\n    \n// Sort and print the final results.\nprintln(\"\\nThe average of friends by age:\")\nresults.sorted.foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:31:23 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275994_938331476",
+      "id": "20171121-202422_776589333",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:31:23 AM",
+      "dateFinished": "Nov 23, 2017 1:31:27 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Exercício 1\nEncontre a média do numero de amigos pelo primeiro nome de uma pessoa.",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eExercício 1\u003c/h4\u003e\n\u003cp\u003eEncontre a média do numero de amigos pelo primeiro nome de uma pessoa.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275995_937946727",
+      "id": "20171121-202509_1147824199",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Exemplo 3\nNesse exemplos vamos trabalhar com a transformação `filter`, que recebe uma função booleana que avalia se cada item do RDD deve continuar ou não no conjunto de dados. Nosso conjunto de dados contém informações do tempo de estações na Europa no ano de 1800. Cada linha do conjunto contém as seguintes informações:\n\nID da estação, data, tipo da informação do tempo (TMIN, TMAX, PRCP), valor da informação, e outros dados.\n\nNesse exemplo queremos encontrar a menor temperatura mínima por estação.",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExemplo 3\u003c/h3\u003e\n\u003cp\u003eNesse exemplos vamos trabalhar com a transformação \u003ccode\u003efilter\u003c/code\u003e, que recebe uma função booleana que avalia se cada item do RDD deve continuar ou não no conjunto de dados. Nosso conjunto de dados contém informações do tempo de estações na Europa no ano de 1800. Cada linha do conjunto contém as seguintes informações:\u003c/p\u003e\n\u003cp\u003eID da estação, data, tipo da informação do tempo (TMIN, TMAX, PRCP), valor da informação, e outros dados.\u003c/p\u003e\n\u003cp\u003eNesse exemplo queremos encontrar a menor temperatura mínima por estação.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275995_937946727",
+      "id": "20171121-205042_785713190",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// Read each line of input data\nval lines \u003d sc.textFile(\"/data/1800.csv\")\n\ndef parseLine(line:String)\u003d {\n    val fields \u003d line.split(\",\")\n    val stationID \u003d fields(0)\n    val entryType \u003d fields(2)\n    val temperature \u003d fields(3).toFloat\n    (stationID, entryType, temperature)\n}\n    \n// Convert to (stationID, entryType, temperature) tuples\nval parsedLines \u003d lines.map(parseLine)\n    \n// Filter out all but TMIN entries\nval minTemps \u003d parsedLines.filter(x \u003d\u003e x._2 \u003d\u003d \"TMIN\")\n    \n// Convert to (stationID, temperature)\nval stationTemps \u003d minTemps.map(x \u003d\u003e (x._1, x._3.toFloat))\n    \n// Reduce by stationID retaining the minimum temperature found\nval minTempsByStation \u003d stationTemps.reduceByKey( (x,y) \u003d\u003e if(x \u003c y) x else y)\n    \n// Collect, format, and print the results\nval results \u003d minTempsByStation.collect()\n    \nfor (result \u003c- results.sorted) {\n    val station \u003d result._1\n    val temp \u003d result._2\n    val formattedTemp \u003d f\"$temp%.2f C\"\n    println(s\"$station minimum temperature: $formattedTemp\") \n}",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:31:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275995_937946727",
+      "id": "20171121-210838_487917378",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:31:31 AM",
+      "dateFinished": "Nov 23, 2017 1:31:34 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Exercício 2\nCom o mesmo conjunto de dados do Exemplo 3:\n\n1. Encontre a maior temperatura máxima por estação (TMAX)\n2. Encontre o dia que teve a maior precipitação para cada estação que possui informação sobre precipitação (PRCP)",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eExercício 2\u003c/h4\u003e\n\u003cp\u003eCom o mesmo conjunto de dados do Exemplo 3:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eEncontre a maior temperatura máxima por estação (TMAX)\u003c/li\u003e\n  \u003cli\u003eEncontre o dia que teve a maior precipitação para cada estação que possui informação sobre precipitação (PRCP)\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275996_936022983",
+      "id": "20171121-210949_2103824292",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Exemplo 4\n\nNeste exemplo vamos contar a quantidade de vezes em que cada palava aparece em um texto e vamos exibir as 10 mais frequentes. Este exemplo é o mais classico no contexto de Big Data. Vamos ter a oportunidade de trabalhar com a transformação `flatMap`, que trabalha de forma parecida ao `map`, mas com a diferença de que a função passada como parâmetro deve retornar algum objeto iterável (listas, sequências, arrays...) e o resultado final da transformação é a concatenação de todos os objetos retornados. ",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExemplo 4\u003c/h3\u003e\n\u003cp\u003eNeste exemplo vamos contar a quantidade de vezes em que cada palava aparece em um texto e vamos exibir as 10 mais frequentes. Este exemplo é o mais classico no contexto de Big Data. Vamos ter a oportunidade de trabalhar com a transformação \u003ccode\u003eflatMap\u003c/code\u003e, que trabalha de forma parecida ao \u003ccode\u003emap\u003c/code\u003e, mas com a diferença de que a função passada como parâmetro deve retornar algum objeto iterável (listas, sequências, arrays\u0026hellip;) e o resultado final da transformação é a concatenação de todos os objetos retornados.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275996_936022983",
+      "id": "20171122-000841_349707225",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// Read each line of my book into an RDD\nval input \u003d sc.textFile(\"/data/book.txt\")\n    \n// Split into words separated by a space character\nval words \u003d input.flatMap(x \u003d\u003e x.split(\" \")).cache()\n    \n// Count up the occurrences of each word\nval wordCounts \u003d words.countByValue()\n\n// Print the results.\nwordCounts.toSeq.sortBy(_._2).reverse.take(10).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:31:45 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275996_936022983",
+      "id": "20171122-000858_525681555",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:31:45 AM",
+      "dateFinished": "Nov 23, 2017 1:31:47 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Exemplo 5\n\nUm problema da nossa solução para o contador de palavras é que estamos carregando para o Driver todas as palavras e suas frequências, mas, uma vez que só queremos exibir as 10 palavras mais frequentes, estamos carregando um número muito grande de dados desnecessários (6983 palavras e frequências que não estão sendo exibidas) para o Driver, o que em um exemplo maior pode ser um problema. Para melhorar isso, uma possível solução é fazer a ordenação no próprio RDD sem ter que coletar todos os seus dados antes e só depois pegar a quantidade necessária de dados. \n\nSe você reparou bem no exemplo anterior, no RDD armazenado na variável words, logo após a chamada do `flatMap`, nós chamamos a operação `cache`. Em Spark, todo o processamento feito em cima dos dados só é iniciado de fato após se chamar alguma ação, logo, transformações como `map` e `filter`, por exemplo, só são computadas quando alguma ação, como `reduce` ou `collect`, por exemplo, é chamada. Antes disso, as transformações realizadas formam apenas um plano de execução que será ativado quando alguma ação for chamada, sendo essa a razão por qual Spark é Lazy Evaluated. \n\nEsse plano de ação é armazenado por Spark como uma DAG (Direct Acyclic Graph) que forma uma linha do tempo de dependências entre RDDs. Essa DAG serve tanto para optimizar a execução da ação quanto para guardar o plano de execução para o caso em que ocorra alguma falha no processamento e alguma etapa precise ser computada novamente, dessa forma, garantindo a resiliência de Spark. Uma vez que uma transformação não retorna um conjunto de dados de fato (concreto), se nós chamarmos várias vezes uma ação no mesmo RDD, o que acontece é que todas as transformações vão ser computadas novamente para cada nova ação que chamarmos. \n\nUma forma de evitar isso é colocar em memória os dados intermediários de um RDD. Fazendo isso, fazemos com que após o RDD ser computado pela primeira vez, todas as ações seguintes realizadas no mesmo RDD não precisem recomputar todas as trasnformações novamente, evitando, assim, novos processamentos desnecessários. Em Spark isso pode ser feito ao chamar a operação `cache` que coloca o resultado do RDD em memória principal. Uma outra alternativa é chamar a operação `persist` que por default tem o mesmo comportamento que `cache`, sendo que a diferença principal é que `persist` permite armazenar os dados em outros tipos de memória (disco) e utilizando tipos diferentes de compressão. \n\nNo nosso exemplo abaixo, estamos reutilizando o RDD `words` do Exemplo 4, uma vez que nós fizemos um `cache` deste RDD, o processamento que foi feito antes em `words` irá ser feito novamente:",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:46:41 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExemplo 5\u003c/h3\u003e\n\u003cp\u003eUm problema da nossa solução para o contador de palavras é que estamos carregando para o Driver todas as palavras e suas frequências, mas, uma vez que só queremos exibir as 10 palavras mais frequentes, estamos carregando um número muito grande de dados desnecessários (6983 palavras e frequências que não estão sendo exibidas) para o Driver, o que em um exemplo maior pode ser um problema. Para melhorar isso, uma possível solução é fazer a ordenação no próprio RDD sem ter que coletar todos os seus dados antes e só depois pegar a quantidade necessária de dados. \u003c/p\u003e\n\u003cp\u003eSe você reparou bem no exemplo anterior, no RDD armazenado na variável words, logo após a chamada do \u003ccode\u003eflatMap\u003c/code\u003e, nós chamamos a operação \u003ccode\u003ecache\u003c/code\u003e. Em Spark, todo o processamento feito em cima dos dados só é iniciado de fato após se chamar alguma ação, logo, transformações como \u003ccode\u003emap\u003c/code\u003e e \u003ccode\u003efilter\u003c/code\u003e, por exemplo, só são computadas quando alguma ação, como \u003ccode\u003ereduce\u003c/code\u003e ou \u003ccode\u003ecollect\u003c/code\u003e, por exemplo, é chamada. Antes disso, as transformações realizadas formam apenas um plano de execução que será ativado quando alguma ação for chamada, sendo essa a razão por qual Spark é Lazy Evaluated. \u003c/p\u003e\n\u003cp\u003eEsse plano de ação é armazenado por Spark como uma DAG (Direct Acyclic Graph) que forma uma linha do tempo de dependências entre RDDs. Essa DAG serve tanto para optimizar a execução da ação quanto para guardar o plano de execução para o caso em que ocorra alguma falha no processamento e alguma etapa precise ser computada novamente, dessa forma, garantindo a resiliência de Spark. Uma vez que uma transformação não retorna um conjunto de dados de fato (concreto), se nós chamarmos várias vezes uma ação no mesmo RDD, o que acontece é que todas as transformações vão ser computadas novamente para cada nova ação que chamarmos. \u003c/p\u003e\n\u003cp\u003eUma forma de evitar isso é colocar em memória os dados intermediários de um RDD. Fazendo isso, fazemos com que após o RDD ser computado pela primeira vez, todas as ações seguintes realizadas no mesmo RDD não precisem recomputar todas as trasnformações novamente, evitando, assim, novos processamentos desnecessários. Em Spark isso pode ser feito ao chamar a operação \u003ccode\u003ecache\u003c/code\u003e que coloca o resultado do RDD em memória principal. Uma outra alternativa é chamar a operação \u003ccode\u003epersist\u003c/code\u003e que por default tem o mesmo comportamento que \u003ccode\u003ecache\u003c/code\u003e, sendo que a diferença principal é que \u003ccode\u003epersist\u003c/code\u003e permite armazenar os dados em outros tipos de memória (disco) e utilizando tipos diferentes de compressão. \u003c/p\u003e\n\u003cp\u003eNo nosso exemplo abaixo, estamos reutilizando o RDD \u003ccode\u003ewords\u003c/code\u003e do Exemplo 4, uma vez que nós fizemos um \u003ccode\u003ecache\u003c/code\u003e deste RDD, o processamento que foi feito antes em \u003ccode\u003ewords\u003c/code\u003e irá ser feito novamente:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275997_935638234",
+      "id": "20171122-001640_1542970139",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:46:41 AM",
+      "dateFinished": "Nov 23, 2017 1:46:41 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val wordCounts \u003d words.map(x \u003d\u003e (x, 1)).reduceByKey((x, y) \u003d\u003e x + y)\n\n// Flip (word, count) tuples to (count, word) and then sort by key (the counts)\nval wordCountsSorted \u003d wordCounts.map(x \u003d\u003e (x._2, x._1)).sortByKey(false).take(10) // descending \n\n// Print the results, flipping the (count, word) results to word: count as we go.\nfor (result \u003c- wordCountsSorted) {\n    val count \u003d result._1\n    val word \u003d result._2\n    println(s\"($word, $count)\")\n}",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 1:31:51 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275998_936792481",
+      "id": "20171122-220857_317317563",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 1:31:51 AM",
+      "dateFinished": "Nov 23, 2017 1:31:53 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Exercício 3\n\nNosso exemplo do contador de palavras ainda tem uma série de problemas:\n\n1. Palavras terminadas com algum tipo de pontuação, como \"way?\", \"of.\" e \"touch,\", por exemplo, estão sendo computadas como uma palavra normal, sendo que a pontuação não deveria fazer parte da nossa análise;\n2. Palavras com letras em caixa alta ou caixa baixa estão estão sendo processadas de forma diferente, dessa forma, palavras como \"The\" e \"the\" são consideradas palavras diferentes, sendo, na verdade, a mesma palavra;\n3. Palavras comuns como \"to\", \"you\", \"the\", \"a\" e etc são as palavras, de fato, que mais aparecem em um texto em inglês, entretanto, essas palavras não nos ajudam a fazer uma boa análise do texto uma vez que não são relacionadas ao assunto tratado, por isso deveriam ser excluídas durante a análise.\n\nMelhore o exemplo do contador de palavras solucionando os três problemas citados acima.\n\nDicas:\n\n1. Use expressões regulares (`\"\\\\W+\"`);\n2. Deixe tudo em caixa alta ou caixa baixa;\n3. Crie um dicionário de termos comuns e filtre-os.",
+      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eExercício 3\u003c/h4\u003e\n\u003cp\u003eNosso exemplo do contador de palavras ainda tem uma série de problemas:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003ePalavras terminadas com algum tipo de pontuação, como \u0026ldquo;way?\u0026rdquo;, \u0026ldquo;of.\u0026rdquo; e \u0026ldquo;touch,\u0026rdquo;, por exemplo, estão sendo computadas como uma palavra normal, sendo que a pontuação não deveria fazer parte da nossa análise;\u003c/li\u003e\n  \u003cli\u003ePalavras com letras em caixa alta ou caixa baixa estão estão sendo processadas de forma diferente, dessa forma, palavras como \u0026ldquo;The\u0026rdquo; e \u0026ldquo;the\u0026rdquo; são consideradas palavras diferentes, sendo, na verdade, a mesma palavra;\u003c/li\u003e\n  \u003cli\u003ePalavras comuns como \u0026ldquo;to\u0026rdquo;, \u0026ldquo;you\u0026rdquo;, \u0026ldquo;the\u0026rdquo;, \u0026ldquo;a\u0026rdquo; e etc são as palavras, de fato, que mais aparecem em um texto em inglês, entretanto, essas palavras não nos ajudam a fazer uma boa análise do texto uma vez que não são relacionadas ao assunto tratado, por isso deveriam ser excluídas durante a análise.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eMelhore o exemplo do contador de palavras solucionando os três problemas citados acima.\u003c/p\u003e\n\u003cp\u003eDicas:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eUse expressões regulares (\u003ccode\u003e\u0026quot;\\\\W+\u0026quot;\u003c/code\u003e);\u003c/li\u003e\n  \u003cli\u003eDeixe tudo em caixa alta ou caixa baixa;\u003c/li\u003e\n  \u003cli\u003eCrie um dicionário de termos comuns e filtre-os.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275998_936792481",
+      "id": "20171122-220939_2079128639",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Exercício 4\n\nCom o mesmo conjunto de dados do site MovieLens analisado no Exemplo 1:\n\n1. Encontre os 10 filmes com maior numero de classificações (ratings)\n2. Encontre o filme com a média de classificação (rating) mais alta\n\nEm ambos os casos, deve ser exibido o título do filme ao invés do seu id.\n\nDica:\n\n* Obtenha os títulos dos filmes no arquivo `/data/u.item`\n    * Uma alternativa é criar um RDD de (id, title) e fazer um join com o RDD principal\n    * Uma outra alternativa, mais eficiente, é usar uma Broadcast Variable para guardar um dicionário de (id, title) (Pesquise essa alternativa)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 2:15:28 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eExercício 4\u003c/h4\u003e\n\u003cp\u003eCom o mesmo conjunto de dados do site MovieLens analisado no Exemplo 1:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eEncontre os 10 filmes com maior numero de classificações (ratings)\u003c/li\u003e\n  \u003cli\u003eEncontre o filme com a média de classificação (rating) mais alta\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eEm ambos os casos, deve ser exibido o título do filme ao invés do seu id.\u003c/p\u003e\n\u003cp\u003eDica:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eObtenha os títulos dos filmes no arquivo \u003ccode\u003e/data/u.item\u003c/code\u003e\n    \u003cul\u003e\n      \u003cli\u003eUma alternativa é criar um RDD de (id, title) e fazer um join com o RDD principal\u003c/li\u003e\n      \u003cli\u003eUma outra alternativa, mais eficiente, é usar uma Broadcast Variable para guardar um dicionário de (id, title) (Pesquise essa alternativa)\u003c/li\u003e\n    \u003c/ul\u003e\n  \u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1511395275998_936792481",
+      "id": "20171122-234014_1259131342",
+      "dateCreated": "Nov 23, 2017 12:01:15 AM",
+      "dateStarted": "Nov 23, 2017 2:15:28 AM",
+      "dateFinished": "Nov 23, 2017 2:15:28 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 2:15:10 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1511403296223_257354853",
+      "id": "20171123-021456_1207670529",
+      "dateCreated": "Nov 23, 2017 2:14:56 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Tutorial de Spark em Scala",
+  "id": "2D154DUAJ",
+  "angularObjects": {
+    "2CXSPW7P2:shared_process": [],
+    "2CYCKKJ5T:shared_process": [],
+    "2D2GFPZ9C:shared_process": [],
+    "2D1HG751T:shared_process": [],
+    "2D1YYFUJ4:shared_process": [],
+    "2D2DS8S87:shared_process": [],
+    "2CXW41M55:shared_process": [],
+    "2CZ7PR4BU:shared_process": [],
+    "2CY9KADWY:shared_process": [],
+    "2D1NV33AX:shared_process": [],
+    "2CXMGTX68:shared_process": [],
+    "2CYHJXQRA:shared_process": [],
+    "2CZYZQFZ5:shared_process": [],
+    "2CYP3UAYC:shared_process": [],
+    "2D1HAEFC9:shared_process": [],
+    "2CY2K989G:shared_process": [],
+    "2D1EBF1C2:shared_process": [],
+    "2CZURQNJ3:shared_process": [],
+    "2CZKFZ171:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
