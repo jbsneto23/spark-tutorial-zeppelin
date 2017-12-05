@@ -41,15 +41,16 @@
     {
       "text": "sc.version",
       "user": "anonymous",
-      "dateUpdated": "Nov 18, 2017 4:39:16 PM",
+      "dateUpdated": "Dec 5, 2017 12:20:47 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "scala"
+          "language": "text",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -60,7 +61,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "res0: String \u003d 2.1.0\n"
+            "data": "res49: String \u003d 2.1.0\n"
           }
         ]
       },
@@ -68,23 +69,24 @@
       "jobName": "paragraph_1511023096822_-841346405",
       "id": "20171118-163816_569175197",
       "dateCreated": "Nov 18, 2017 4:38:16 PM",
-      "dateStarted": "Nov 18, 2017 4:39:16 PM",
-      "dateFinished": "Nov 18, 2017 4:39:53 PM",
+      "dateStarted": "Dec 5, 2017 12:20:47 AM",
+      "dateFinished": "Dec 5, 2017 12:20:48 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "final case class Rating(movieId: Int, rating: Int)\n\ndef mapper(line: String) \u003d {\n    val fields \u003d line.split(\"\\t\")\n    Rating(fields(1).toInt, fields(2).toInt)\n}\n\nval ratings \u003d sc.textFile(\"/data/ml-100k/u.data\").map(mapper)\n",
       "user": "anonymous",
-      "dateUpdated": "Nov 18, 2017 4:50:38 PM",
+      "dateUpdated": "Dec 5, 2017 12:30:03 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "scala"
+          "language": "text",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -95,7 +97,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "warning: there was one unchecked warning; re-run with -unchecked for details\ndefined class Rating\nmapper: (line: String)Rating\nratings: org.apache.spark.rdd.RDD[Rating] \u003d MapPartitionsRDD[5] at map at \u003cconsole\u003e:32\n"
+            "data": "warning: there was one unchecked warning; re-run with -unchecked for details\ndefined class Rating\nmapper: (line: String)Rating\nratings: org.apache.spark.rdd.RDD[Rating] \u003d MapPartitionsRDD[26] at map at \u003cconsole\u003e:83\n"
           }
         ]
       },
@@ -103,23 +105,24 @@
       "jobName": "paragraph_1511023156550_-1991468136",
       "id": "20171118-163916_130187320",
       "dateCreated": "Nov 18, 2017 4:39:16 PM",
-      "dateStarted": "Nov 18, 2017 4:50:38 PM",
-      "dateFinished": "Nov 18, 2017 4:50:40 PM",
+      "dateStarted": "Dec 5, 2017 12:30:03 AM",
+      "dateFinished": "Dec 5, 2017 12:30:04 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "import sqlContext.implicits._\n\nval ratingsDF \u003d ratings.toDF\n\nratingsDF.printSchema",
       "user": "anonymous",
-      "dateUpdated": "Nov 18, 2017 4:51:34 PM",
+      "dateUpdated": "Dec 5, 2017 12:30:32 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "scala"
+          "language": "text",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -138,8 +141,8 @@
       "jobName": "paragraph_1511023780910_1112470559",
       "id": "20171118-164940_1515869947",
       "dateCreated": "Nov 18, 2017 4:49:40 PM",
-      "dateStarted": "Nov 18, 2017 4:51:34 PM",
-      "dateFinished": "Nov 18, 2017 4:51:39 PM",
+      "dateStarted": "Dec 5, 2017 12:30:32 AM",
+      "dateFinished": "Dec 5, 2017 12:30:35 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -436,25 +439,25 @@
   "name": "Playing with MovieLens",
   "id": "2CXZG3Y64",
   "angularObjects": {
-    "2CZPDAYKP:shared_process": [],
-    "2CXSAQV3A:shared_process": [],
-    "2CYURA1SB:shared_process": [],
-    "2CYEWSBKZ:shared_process": [],
-    "2D1G44X1S:shared_process": [],
-    "2CYXYDMCE:shared_process": [],
-    "2CZ5629RX:shared_process": [],
-    "2D25X5QJ3:shared_process": [],
-    "2CX9264AM:shared_process": [],
-    "2CXEYBFHQ:shared_process": [],
-    "2CY2E29ZM:shared_process": [],
-    "2CZJ4JXTZ:shared_process": [],
-    "2D1JEFAW9:shared_process": [],
-    "2D1KM387G:shared_process": [],
-    "2CZQBPSZP:shared_process": [],
-    "2CZ3T1QT8:shared_process": [],
-    "2CZ3UFQVF:shared_process": [],
-    "2D1BYYPTR:shared_process": [],
-    "2CZJ4GD43:shared_process": []
+    "2CZGDR2TY:shared_process": [],
+    "2CZK13J2C:shared_process": [],
+    "2D3C6UJ1Z:shared_process": [],
+    "2CZ5VJBEF:shared_process": [],
+    "2D13F4971:shared_process": [],
+    "2D11Q84XH:shared_process": [],
+    "2D16XWNW2:shared_process": [],
+    "2D2Z1PHCC:shared_process": [],
+    "2CZ7WQT13:shared_process": [],
+    "2CZYEYYXK:shared_process": [],
+    "2D3HUYY69:shared_process": [],
+    "2D25S6W1B:shared_process": [],
+    "2D2G3GYB9:shared_process": [],
+    "2CZ37MJMY:shared_process": [],
+    "2D2XCMJGZ:shared_process": [],
+    "2D1EE5B9K:shared_process": [],
+    "2D2MF3XPP:shared_process": [],
+    "2D1TAFWTZ:shared_process": [],
+    "2D35YR7RH:shared_process": []
   },
   "config": {},
   "info": {}

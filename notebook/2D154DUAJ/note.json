@@ -2,7 +2,8 @@
   "paragraphs": [
     {
       "text": "%md\n# Tutorial de Spark",
-      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 6:07:48 PM",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -32,8 +33,9 @@
       "jobName": "paragraph_1511395275983_930251749",
       "id": "20171121-164833_100867793",
       "dateCreated": "Nov 23, 2017 12:01:15 AM",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "Nov 23, 2017 6:07:48 PM",
+      "dateFinished": "Nov 23, 2017 6:07:51 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -76,7 +78,8 @@
     },
     {
       "text": "println(sc)",
-      "dateUpdated": "Nov 23, 2017 12:01:15 AM",
+      "user": "anonymous",
+      "dateUpdated": "Nov 23, 2017 6:07:50 PM",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/text",
@@ -91,12 +94,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "org.apache.spark.SparkContext@42df6871\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1511395275987_941024718",
       "id": "20171121-165730_112926678",
       "dateCreated": "Nov 23, 2017 12:01:15 AM",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "Nov 23, 2017 6:07:51 PM",
+      "dateFinished": "Nov 23, 2017 6:08:17 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -829,25 +842,25 @@
   "name": "Tutorial de Spark em Scala",
   "id": "2D154DUAJ",
   "angularObjects": {
-    "2CXSPW7P2:shared_process": [],
-    "2CYCKKJ5T:shared_process": [],
-    "2D2GFPZ9C:shared_process": [],
-    "2D1HG751T:shared_process": [],
-    "2D1YYFUJ4:shared_process": [],
-    "2D2DS8S87:shared_process": [],
-    "2CXW41M55:shared_process": [],
-    "2CZ7PR4BU:shared_process": [],
-    "2CY9KADWY:shared_process": [],
-    "2D1NV33AX:shared_process": [],
-    "2CXMGTX68:shared_process": [],
-    "2CYHJXQRA:shared_process": [],
-    "2CZYZQFZ5:shared_process": [],
-    "2CYP3UAYC:shared_process": [],
-    "2D1HAEFC9:shared_process": [],
-    "2CY2K989G:shared_process": [],
-    "2D1EBF1C2:shared_process": [],
-    "2CZURQNJ3:shared_process": [],
-    "2CZKFZ171:shared_process": []
+    "2D1JSMVCS:shared_process": [],
+    "2CXPC12R7:shared_process": [],
+    "2CZUJE4SM:shared_process": [],
+    "2D21H21AQ:shared_process": [],
+    "2CYN342WS:shared_process": [],
+    "2CYV1AP88:shared_process": [],
+    "2D19BCB84:shared_process": [],
+    "2D1JCFN3Q:shared_process": [],
+    "2D245YB68:shared_process": [],
+    "2D1Z9XSJT:shared_process": [],
+    "2CYEJ7Z8W:shared_process": [],
+    "2CXXVEDXN:shared_process": [],
+    "2D2JFQ3BG:shared_process": [],
+    "2D1VWCKX2:shared_process": [],
+    "2CYZ7WRZF:shared_process": [],
+    "2CYMWFS2W:shared_process": [],
+    "2CZTKPNJA:shared_process": [],
+    "2CYKPGY3Q:shared_process": [],
+    "2CYWJ2852:shared_process": []
   },
   "config": {},
   "info": {}
