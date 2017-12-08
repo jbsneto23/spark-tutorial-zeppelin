@@ -1,0 +1,1311 @@
+{
+  "paragraphs": [
+    {
+      "title": "Comparação no desenvolvimento de consultas (queries) entre Apache Pig X Spark SQL",
+      "text": "%md\n\n# Contextualizando\n\nEste trabalho é a continuação do projeto \"Exhibiting violence through communities analysis in social networks\" que foi desenvolvido no decorrer do curso _Data Centrics Sciences_, ministrado por Genoveva Vargas-Solar e participação de Javier Espinosa.\n\n### Discentes\n\nDenis Albuquerque, João Batista e Roberta Freitas.\n\n### Objetivo\n\nComparar empiricamente e descrever o desenvolvimento de consultas com as ferramentas: Apache Pig e Spark SQL.",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:30 AM",
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433900_-1368126093",
+      "id": "20171205-033139_1582218185",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:09:12 AM",
+      "dateFinished": "Dec 8, 2017 12:09:12 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n\n# Primeiro Dataset utilizado: Usuários\n\nEsse dataset de usuários possui diversas informações relativas ao twitter de um usuário, como id, name, etc. \n\nO primeiro desafio é fazer com que esses dados sejam analisados corretamente a partir do seu carregamento.\nOu seja, a transformação das dados que estão no formato  \".csv\" em dados que possam ser lidos pelas ferramentas.\n\n### Utilizando PIG\n\nNo caso de PIG, como pode ser visto abaixo, criamos a classe Users e usamos o \"LOAD\" para carregar o users.csv. O PigStorage é usado para o pig entender que a vírgula separa cada um dos parâmetros. Em seguida, cada parâmetro deve ter seu nome e tipo identificado, para que a leitura seja feita corretamente.\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:30 AM",
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433909_-1359276868",
+      "id": "20171205-035316_1381030156",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 5, 2017 4:17:16 PM",
+      "dateFinished": "Dec 5, 2017 4:17:16 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "PIG: carregando dataset de usuários",
+      "text": "%pig\n\nUsers \u003d LOAD \u0027/data/users.csv\u0027 using PigStorage(\u0027,\u0027) as (\n      id: chararray, \n      name: chararray, \n      screen_name: chararray, \n      location: chararray, \n      url: chararray, \n      description: chararray, \n      verified: boolean,\n      followers_count: int,\n      friends_count: int,\n      listed_count: int, \n      favourites_count: int, \n      statuses_count: int, \n      created_at: chararray, \n      utc_offset: int,\n      time_zone: chararray, \n      geo_enabled: boolean,\n      lang: chararray, \n      profile_image_url_https: chararray\n);",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:30 AM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433909_-1359276868",
+      "id": "20171130-212956_2028967260",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 2:23:35 AM",
+      "dateFinished": "Dec 8, 2017 2:23:35 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n# Utilizando SPARK\n\nNo caso do Spark, existe uma semelhança na leitura dos dados com o PIG, pois ambos terão que definir o nome e os tipos dos parâmetros. \n\n1. Primeiro passo: definir uma classe ( **User**) cujos atributos determinam o nome e o tipo de todos os parâmetros.\n\n2. Segundo passo: definir uma função ( **mapper**) que transforme uma linha de texto do dataset em um objeto da classe definida. Utilizamos funções auxiliares para conversão das strings de valores do tipo inteiro ( **convertToInt**) e booleano ( **convertToBool**). \n\n3. Terceiro Passo: realizar a leitura das linhas de texto do arquivo do dataset, mapeando cada linha para a função definida (mapper), resultando em um Array de **User**.\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:30 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433910_-1358122621",
+      "id": "20171205-035324_1482679102",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 5, 2017 4:17:16 PM",
+      "dateFinished": "Dec 5, 2017 4:17:16 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SPARK: carregando dataset de usuários",
+      "text": "%spark \n\nfinal case class User(     \n      id: String, \n      name: String, \n      screen_name: String, \n      location: String, \n      url: String, \n      description: String, \n      verified: Option[Boolean],\n      followers_count: Option[Int],\n      friends_count: Option[Int],\n      listed_count: Option[Int], \n      favourites_count: Option[Int], \n      statuses_count: Option[Int], \n      created_at: String, \n      utc_offset: Option[Int],\n      time_zone: String, \n      geo_enabled: Option[Boolean],\n      lang: String, \n      profile_image_url_https: String\n)\n\ndef convertToInt(str : String) : Option [Int] \u003d {\n    try {\n        return Some(str.toInt)\n    } catch {\n        case e:Exception \u003d\u003e return None\n    }\n}\n\ndef convertToBool(str : String) : Option [Boolean] \u003d {\n    try {\n        return Some(str.toBoolean)\n    } catch {\n        case e:Exception \u003d\u003e return None\n    }\n}\n\ndef mapper(line: String) : User \u003d {\n    val fields \u003d line.split(\",\")\n    User(\n        fields(0),\n        fields(1),\n        fields(2),\n        fields(3),\n        fields(4),\n        fields(5),\n        convertToBool(fields(6)),\n        convertToInt(fields(7)),\n        convertToInt(fields(8)),\n        convertToInt(fields(9)),\n        convertToInt(fields(10)),        \n        convertToInt(fields(11)),\n        fields(12),\n        convertToInt(fields(13)),\n        fields(14),\n        convertToBool(fields(15)),\n        fields(16),\n        fields(17)\n    )\n}\n\nval users \u003d sc.textFile(\"/data/users.csv\").map(mapper)",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:30 AM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433911_-1358507370",
+      "id": "20171130-190338_1546486108",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 2:23:39 AM",
+      "dateFinished": "Dec 8, 2017 2:24:12 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# Pig x Spark: Comparação de Carregamento do Dataset de Users\n\nNo tangente a programação feita para carregar corretamente esse dataset, o PIG apresenta um processo simplificado que abstrai alguns tratamentos de dados.  \n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:30 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433911_-1358507370",
+      "id": "20171205-044616_26809096",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 5, 2017 4:17:18 PM",
+      "dateFinished": "Dec 5, 2017 4:17:18 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n# Consultas com PIG\n\nListar os 10 primeiros usuários, da tabela Users e mostrar o id, name e screen_name.\n\nEm PIG, para exibir o resultado na tela tem que ser feito a instrução _DUMP_ seguida da expressão da query ou de um _alias_ para expressão. Caso a consulta devesse ser armazenada, a instrução utilizada seria \"Store\", que grava a saída no sistema de arquivos.\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:30 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433912_-1360431115",
+      "id": "20171205-045836_398447885",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 5, 2017 4:17:18 PM",
+      "dateFinished": "Dec 5, 2017 4:17:18 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512699837938_1576945490",
+      "id": "20171208-022357_937757892",
+      "dateCreated": "Dec 8, 2017 2:23:57 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "PIG Latin: listando 10 usuários",
+      "text": "%pig\n\nResult \u003d LIMIT Users 10;\nResult \u003d FOREACH Result GENERATE id, name, screen_name; \n\nDUMP Result;",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433912_-1360431115",
+      "id": "20171205-014157_995324452",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:14:32 AM",
+      "dateFinished": "Dec 8, 2017 12:14:33 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n# Outra forma de Listar os 10 usuários em PIG\n\nSeria chamar o pig.query e dizer diretamente a consulta. Isso é a função desse interpretador do PIG, no próprio caderno Zeppelin.\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433912_-1360431115",
+      "id": "20171205-050546_1187535006",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 5, 2017 4:17:19 PM",
+      "dateFinished": "Dec 5, 2017 4:17:19 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pig.query\n\nFOREACH (LIMIT Users 10) GENERATE id, name, screen_name;\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433913_-1360815864",
+      "id": "20171205-022504_1819103946",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:14:46 AM",
+      "dateFinished": "Dec 8, 2017 12:14:46 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "PIG Latin: contando número de usuários (linhas)",
+      "text": "%pig\n\nGroups \u003d GROUP Users ALL;\nResult \u003d FOREACH Groups GENERATE COUNT_STAR($1);\n\nDUMP Result;",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433916_-1361970110",
+      "id": "20171130-200342_793160850",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:14:55 AM",
+      "dateFinished": "Dec 8, 2017 12:14:58 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Scala: listando 10 usuarios",
+      "text": "%spark\n\nusers.take(10).foreach(usr \u003d\u003e println(usr.id + \",\" + usr.name + \",\" + usr.screen_name));",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433916_-1361970110",
+      "id": "20171205-014528_2087065679",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:15:01 AM",
+      "dateFinished": "Dec 8, 2017 12:15:03 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Scala: contando número de usuários (linhas) ",
+      "text": "%spark\n\nusers.count",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433916_-1361970110",
+      "id": "20171130-212438_838601865",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:15:16 AM",
+      "dateFinished": "Dec 8, 2017 12:15:16 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n# Spark SQL\n\n1. Explicar o que é DataFrame\n2. registerTempTable\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512490478968_-1510481844",
+      "id": "20171205-161438_1190981993",
+      "dateCreated": "Dec 5, 2017 4:14:38 PM",
+      "dateStarted": "Dec 5, 2017 4:17:20 PM",
+      "dateFinished": "Dec 5, 2017 4:17:20 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SPARK SQL: convertendo RDD para DataFrame",
+      "text": "%spark \n\nimport sqlContext.implicits._\n\nval usersDF \u003d users.toDF\n\nusersDF.registerTempTable(\"users\")\nusersDF.printSchema",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433917_-1362354859",
+      "id": "20171130-212354_436780378",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:15:21 AM",
+      "dateFinished": "Dec 8, 2017 12:15:26 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SPARK SQL: listando 10 usuarios ",
+      "text": "%spark \n\nprintln(\"Dataframe API\")\n\nusersDF.select(\"id\",\"name\",\"screen_name\").limit(10).show\n\nprintln(\"SQL\")\n\nsql(\"select id, name, screen_name from users limit 10\").show",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433918_-1361200613",
+      "id": "20171205-020251_2136860616",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:15:32 AM",
+      "dateFinished": "Dec 8, 2017 12:15:34 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SQL: listando 10 usuarios",
+      "text": "%sql \n\nselect id, name, screen_name from users limit 10",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433919_-1361585362",
+      "id": "20171205-020643_268693600",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:15:49 AM",
+      "dateFinished": "Dec 8, 2017 12:15:49 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SQL : contando número de usuários (linhas)",
+      "text": "%sql\n\nselect count(*) from users",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433919_-1361585362",
+      "id": "20171205-013154_1882572098",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:15:56 AM",
+      "dateFinished": "Dec 8, 2017 12:15:57 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "PIG: carregando dataset de tweets",
+      "text": "%pig\n\nTweets \u003d LOAD \u0027/data/tweets.csv\u0027 using PigStorage(\u0027,\u0027) as (\n      id: chararray, \n      text: chararray, \n      created_at: chararray, \n      in_reply_to_status_id_str: chararray, \n      in_reply_to_user_id_str: chararray, \n      in_reply_to_screen_name: chararray, \n      user_id: chararray, \n      place_id: chararray, \n      quoted_status_id: chararray, \n      is_quote_status: boolean,\n      retweeted_status_id: chararray, \n      retweet_count: int,\n      favorite_count: int,\n      lang: chararray\n);",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433919_-1361585362",
+      "id": "20171130-200029_1716373258",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 1:38:24 AM",
+      "dateFinished": "Dec 8, 2017 1:38:24 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SPARK: carregando dataset de tweets e criando DataFrame",
+      "text": "%spark \n\nfinal case class Tweet(\n      id: String, \n      text: String, \n      created_at: String, \n      in_reply_to_status_id_str: String, \n      in_reply_to_user_id_str: String, \n      in_reply_to_screen_name: String, \n      user_id: String, \n      place_id: String, \n      quoted_status_id: String, \n      is_quote_status: Option[Boolean],\n      retweeted_status_id: String, \n      retweet_count: Option[Int],\n      favorite_count: Option[Int],\n      lang: String\n)\n\ndef mapper(line: String) : Tweet \u003d {\n    val fields \u003d line.split(\",\")\n    Tweet(\n        fields(0),\n        fields(1),\n        fields(2),\n        fields(3),\n        fields(4),\n        fields(5),\n        fields(6),\n        fields(7),\n        fields(8),\n        convertToBool(fields(9)),\n        fields(10),\n        convertToInt(fields(11)),\n        convertToInt(fields(12)), \n        fields(13)\n    )\n}\n\nval tweets \u003d sc.textFile(\"/data/tweets.csv\").map(mapper)\n\nval tweetsDF \u003d tweets.toDF\n\ntweetsDF.registerTempTable(\"tweets\")\ntweetsDF.printSchema\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512490922164_-973127193",
+      "id": "20171205-162202_1944693946",
+      "dateCreated": "Dec 5, 2017 4:22:02 PM",
+      "dateStarted": "Dec 8, 2017 1:00:35 AM",
+      "dateFinished": "Dec 8, 2017 1:00:37 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n# Answering questions about our dataset\n\n1. How much online abuse do women receive online per hour?\n2. Who are the users who send abusive tweets? \n3. What is the volume of abusive tweets per perpetrator?\n4. Which are common expressions of online anger?\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433919_-1361585362",
+      "id": "20171130-204736_1575874948",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 5, 2017 4:17:22 PM",
+      "dateFinished": "Dec 5, 2017 4:17:22 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "PIG LATIN: 1. How much online abuse do women receive online per hour?",
+      "text": "%pig.query\n\nHour \u003d FOREACH Tweets GENERATE REGEX_EXTRACT(created_at,\u0027(\\\\S{3}) (\\\\S{3}) (\\\\S{2}) (\\\\S{2}):(\\\\S{2}):(\\\\S{2}) (\\\\S{5})\u0027,4) as hour, \u00271\u0027 as qty;\nGrouped \u003d GROUP Hour BY hour;\nFOREACH Grouped GENERATE group as hour, COUNT(Hour) as qty;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "multiBarChart": {
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "hour",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "qty",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433920_-1375821071",
+      "id": "20171205-022733_1798589238",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 12:56:07 AM",
+      "dateFinished": "Dec 8, 2017 12:56:08 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SQL: 1. How much online abuse do women receive online per hour?",
+      "text": "%sql\n\nSELECT hour, count(qty) as qty\n  FROM (SELECT REGEXP_EXTRACT(created_at,\u0027(\\\\S{3}) (\\\\S{3}) (\\\\S{2}) (\\\\S{2}):(\\\\S{2}):(\\\\S{2}) (\\\\S{5})\u0027,4) AS hour, 1 AS qty\n        FROM tweets)\n GROUP BY hour\n \n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "multiBarChart": {
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "hour",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "qty",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512692218033_-911106792",
+      "id": "20171208-001658_843731661",
+      "dateCreated": "Dec 8, 2017 12:16:58 AM",
+      "dateStarted": "Dec 8, 2017 1:08:28 AM",
+      "dateFinished": "Dec 8, 2017 1:08:30 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SPARK SQL: 1. How much online abuse do women receive online per hour?",
+      "text": "%spark\n\ntweetsDF.withColumn(\"created_at\", regexp_extract(\u0027created_at, \"(\\\\S{3}) (\\\\S{3}) (\\\\S{2}) (\\\\S{2}):(\\\\S{2}):(\\\\S{2}) (\\\\S{5})\", 4))\n        .select(\"created_at\",\"id\")\n        .groupBy(\"created_at\")\n        .count()\n        .show;\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "multiBarChart": {
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "hour",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "cnt",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512492534389_-1144660093",
+      "id": "20171205-164854_1683117559",
+      "dateCreated": "Dec 5, 2017 4:48:54 PM",
+      "dateStarted": "Dec 8, 2017 1:09:41 AM",
+      "dateFinished": "Dec 8, 2017 1:09:42 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "PIG LATIN: 2. Who are the users who send abusive tweets? ",
+      "text": "%pig.query\n\nUserIds \u003d FOREACH Tweets GENERATE user_id;\nResult \u003d JOIN Users BY id, UserIds BY user_id;\nResult \u003d FOREACH Result GENERATE id, name, screen_name;\nResult \u003d DISTINCT Result;\nORDER Result BY id;\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": true,
+              "setting": {
+                "multiBarChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Users::id",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433920_-1375821071",
+      "id": "20171205-023324_516204895",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 1:38:46 AM",
+      "dateFinished": "Dec 8, 2017 1:38:49 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SQL: 2. Who are the users who send abusive tweets? ",
+      "text": "%sql\n\nSELECT DISTINCT user_id, name, screen_name\n  FROM Tweets t\n  JOIN Users u\n    ON t.user_id \u003d u.id\n ORDER BY user_id\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:31 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": true,
+              "setting": {
+                "multiBarChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Users::id",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512695668939_1387298817",
+      "id": "20171208-011428_747517533",
+      "dateCreated": "Dec 8, 2017 1:14:28 AM",
+      "dateStarted": "Dec 8, 2017 1:24:32 AM",
+      "dateFinished": "Dec 8, 2017 1:24:34 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SPARK SQL: 2. Who are the users who send abusive tweets? ",
+      "text": "%spark\n\ntweetsDF.join(usersDF, tweetsDF(\"user_id\")\u003d\u003d\u003dusersDF(\"id\"))\n        .select(\"user_id\", \"name\", \"screen_name\")\n        .orderBy(asc(\"user_id\"))\n        .distinct\n        .show\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:32 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512491455273_-230256453",
+      "id": "20171205-163055_644328757",
+      "dateCreated": "Dec 5, 2017 4:30:55 PM",
+      "dateStarted": "Dec 8, 2017 1:51:46 AM",
+      "dateFinished": "Dec 8, 2017 1:51:49 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "PIG LATIN: 3. What is the volume of abusive tweets per perpetrator?",
+      "text": "%pig.query\n\nUserInfo \u003d FOREACH Users GENERATE id, screen_name; \nUniqUsers \u003d DISTINCT UserInfo;\nUserIds \u003d FOREACH Tweets GENERATE user_id;\nJoined \u003d JOIN UniqUsers BY id, UserIds BY user_id;\nGrouped \u003d GROUP Joined By screen_name;\nResult \u003d FOREACH Grouped GENERATE group as screen_name, COUNT(Joined) as qty;\nResultOrdered \u003d ORDER Result BY qty DESC;\n\nLIMIT ResultOrdered 10;\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:32 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "multiBarChart": {
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "screen_name",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "qty",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433921_-1376205820",
+      "id": "20171205-023326_1600397485",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 1:39:35 AM",
+      "dateFinished": "Dec 8, 2017 1:39:38 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SQL: 3. What is the volume of abusive tweets per perpetrator?",
+      "text": "%sql \n\nSELECT screen_name, count(user_id) as qty\n  FROM (SELECT DISTINCT id, screen_name\n          FROM Users) u\n  JOIN Tweets t\n    ON u.id \u003d t.user_id\n GROUP BY screen_name\n ORDER BY qty DESC\n LIMIT 10\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:32 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "multiBarChart": {
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "screen_name",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "qty",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512697210373_-1824757977",
+      "id": "20171208-014010_873451638",
+      "dateCreated": "Dec 8, 2017 1:40:10 AM",
+      "dateStarted": "Dec 8, 2017 1:46:38 AM",
+      "dateFinished": "Dec 8, 2017 1:46:44 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "SQL: 3. What is the volume of abusive tweets per perpetrator?",
+      "text": "%spark\n\nusersDF.select(\"id\", \"screen_name\")\n       .distinct\n       .join(tweetsDF, usersDF(\"id\")\u003d\u003d\u003dtweetsDF(\"user_id\"))\n       .groupBy(\"screen_name\")\n       .count\n       .orderBy(desc(\"count\"))\n       .show\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:32 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "multiBarChart": {
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "screen_name",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "qty",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512697629071_-1021805635",
+      "id": "20171208-014709_832146852",
+      "dateCreated": "Dec 8, 2017 1:47:09 AM",
+      "dateStarted": "Dec 8, 2017 2:05:11 AM",
+      "dateFinished": "Dec 8, 2017 2:05:16 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "PIG LATIN: 4. Which are common expressions of online anger?",
+      "text": "%pig\n\nREGISTER /data/tutorial.jar\nLowered \u003d FOREACH Tweets GENERATE id, org.apache.pig.tutorial.ToLower(text) as tweet;\nNgram \u003d FOREACH Lowered GENERATE id, flatten(org.apache.pig.tutorial.NGramGenerator(tweet)) as ngram;\nNgram \u003d FILTER Ngram BY SIZE(ngram) \u003e 6;\nNgram \u003d DISTINCT Ngram;\nGrouped \u003d GROUP Ngram BY (ngram);\nFrequency \u003d FOREACH Grouped GENERATE group, COUNT(Ngram) as count;\nMostUsed \u003d FILTER Frequency BY count \u003e 20;\nResult \u003d ORDER MostUsed BY count DESC;\n\nDUMP Result;",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:32 AM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "title": true,
+        "results": {},
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433921_-1376205820",
+      "id": "20171205-023327_1035076126",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "dateStarted": "Dec 8, 2017 2:06:06 AM",
+      "dateFinished": "Dec 8, 2017 2:06:10 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pig\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 8, 2017 10:37:32 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/pig",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "pig",
+          "editOnDblClick": false
+        },
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512481433922_-1375051573",
+      "id": "20171205-024952_1573796455",
+      "dateCreated": "Dec 5, 2017 1:43:53 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "PIG vs SPARK 2",
+  "id": "2CZ1AKFQQ",
+  "angularObjects": {
+    "2CZYWQEXF:shared_process": [],
+    "2D1PA2X54:shared_process": [],
+    "2D1ACJ76B:shared_process": [],
+    "2CZ2KDG11:shared_process": [],
+    "2D14XR4PX:shared_process": [],
+    "2CZYS2SX9:shared_process": [],
+    "2D12DJQNZ:shared_process": [],
+    "2D3N5JASV:shared_process": [],
+    "2D3369AZH:shared_process": [],
+    "2D1VMK5Q7:shared_process": [],
+    "2D2MRBHEG:shared_process": [],
+    "2D194FXSA:shared_process": [],
+    "2D3MRG6EN:shared_process": [],
+    "2D2G47ZP9:shared_process": [],
+    "2D33BBZ2Y:shared_process": [],
+    "2D3E2WPSE:shared_process": [],
+    "2CZFP8U6V:shared_process": [],
+    "2CZZ1KZNJ:shared_process": [],
+    "2D1GU9UDZ:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
